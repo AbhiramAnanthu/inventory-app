@@ -12,7 +12,8 @@
     <div class="container mx-auto mt-10">
         <h1 class="text-3xl font-bold mb-5 text-center">Inventory Items</h1>
         <div class="mb-4 flex flex-row justify-start align-center ml-2">
-            <a href="/items/new" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <a href="/item/<%= name %>/create-item"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Create Item
             </a>
         </div>
@@ -21,21 +22,30 @@
                 <thead>
                     <tr>
                         <th class="py-2 px-4 border-b-2 border-gray-300 text-left">Item Name</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-300 text-left">Count</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-300 text-left">Price</th>
                         <th class="py-2 px-4 border-b-2 border-gray-300 text-left">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% data.forEach(function(item) { %>
+                    <% items.forEach(function(item) { %>
                         <tr>
                             <td class="py-2 px-4 border-b border-gray-300">
                                 <%= item.name %>
                             </td>
+                            <td class="py-2 px-4 border-b border-gray-300">
+                                <%= item.count %>
+                            </td>
+                            <td class="py-2 px-4 border-b border-gray-300">
+                                <%= item.price %>
+                            </td>
                             <td class="py-2 px-4 border-b border-gray-300 flex flex-row justify-start align-center">
-                                <a href="/items/<%= item.id %>/edit"
+                                <a href="/item/<%= name %>/<%= item.name %>/update-item/"
                                     class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded">
                                     Update
                                 </a>
-                                <form action="/items/<%= item.id %>?_method=DELETE" method="POST" class="inline">
+                                <form action="/item/<%= item.name %>/<%= name %>/delete-item" method="POST"
+                                    class="inline">
                                     <button type="submit"
                                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded mx-2">
                                         Delete
@@ -43,7 +53,7 @@
                                 </form>
                             </td>
                         </tr>
-                        <% }); %>
+                    <% }); %>
                 </tbody>
             </table>
         </div>

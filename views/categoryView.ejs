@@ -26,7 +26,8 @@
                         </td>
                         <td class="py-2 px-4">
                             <div class="flex space-x-2 justify-center align-center flex-row">
-                                <a href="/category/view-items/" class="text-blue-500 hover:underline">View</a>
+                                <a href="/category/<%= category.name %>/view-items"
+                                    class="text-blue-500 hover:underline">View</a>
 
                                 <a href="/category/get-update-form?name=<%= category.name %>"
                                     class="text-yellow-500 hover:underline">Update</a>

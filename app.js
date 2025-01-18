@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const categoryRouter = require('./routes/categoryRoutes');
 const indexRouter = require('./routes/indexRoutes');
+const itemRouter = require('./routes/itemRoutes');
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/category', categoryRouter);
+app.use('/item', itemRouter);
 
 const PORT = process.env.PORT;
 

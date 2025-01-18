@@ -33,18 +33,10 @@ exports.getCategoryList = async (req, res) => {
   res.render('categoryView', { data });
 };
 
-exports.getItemsList = (req, res) => {
-  const data = [
-    {
-      name: 'Apple Juice',
-      createdAt: '22-01-2004',
-      updatedAt: '23-02-2004',
-      category: 'Juice',
-      count: 124,
-      supplierName: 'Alvin Productions pvt Ltd',
-    },
-  ];
-  res.render('itemView', { data });
+exports.getItemsList = async (req, res) => {
+  const data = await sql(`SELECT name,price,count FROM items`);
+  const catName = req.params.name;
+  res.render('itemView', { items: data, name: catName });
 };
 
 exports.createCatRender = (req, res) => {

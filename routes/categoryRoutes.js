@@ -3,8 +3,9 @@ const categoryController = require('../controllers/categoryController');
 
 const categoryRouter = Router();
 
+//category crud
 categoryRouter.get('/', categoryController.getCategoryList);
-categoryRouter.get('/view-items', categoryController.getItemsList);
+categoryRouter.get('/:name/view-items', categoryController.getItemsList);
 categoryRouter.get('/category-new', categoryController.createCatRender);
 categoryRouter.post('/category-new', categoryController.createCatPost);
 categoryRouter.get('/get-update-form', categoryController.createUpdateRender);
